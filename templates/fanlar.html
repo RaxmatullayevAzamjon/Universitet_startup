@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <br>
+    <br>
+    <h1>Hamma Fanlar ro'yxati</h1>
+    <br>
+    <br>
+    <form method="get">
+        <input type="text" placeholder="Fan nomi yozing" name="nom">
+        <button type="submit"> Qidirish </button>
+    </form>
+    <br>
+    <hr>
+    {% for fan in fanlar %}
+    <h1>{{fan.id}}. {{fan.nom}}  (asosiy ekanligi-{{fan.asosiy}})</h1>
+    <button><a href="/fan_ochir/{{fan.id}}">O'chirish</a></button>
+    <button><a href="/fan_update/{{fan.id}}">O'zgartirish</a></button>
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+    <form method="post"> {% csrf_token %}
+        <label>Fan nomi: </label>
+        <input type="text" name="n">
+        <label>Yo'nalish: </label>
+        <select name="y">
+            {% for yonalish in yonalishlar %}
+            <option value="{{yonalish.id}}">{{yonalish.nom}}</option>
+            {% endfor %}
+        </select>
+        <label>Asosiy: </label>
+        <select name="a">
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select>
+        <button type="submit">Qo'shish</button>
+    </form>
+</body>
+</html>
+

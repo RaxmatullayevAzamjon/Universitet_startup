@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <br>
+      <br>
+      <h1> Fan malumotlarini o'zgartirish </h1>
+      <br>
+      <hr>
+      <form method="post">{% csrf_token %}
+        <label>Nom: </label>
+        <input type="text" name="n" value="{{fan.nom}}">
+        <label>Yo'nalish: </label>
+         <select name="y">
+            {% for yonalish in yonalishlar %}
+              <option value="{{yonalish.id}}">{{yonalish}}</option>
+            {% endfor %}
+       </select>
+        <label>Asosiy: </label>
+        <select name="a">
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select>
+        <button type="submit">Saqlash</button>
+      </form>
+      <br>
+      <button><a href="/fanlar/">Orqaga</a></button>
+</body>
+</html>
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <h1>Ustoz malumotlarini o'zgartirish uchun</h1>
+     <br>
+     <hr>
+     <br>
+     <form method="post">{% csrf_token%}
+       <label>Ism: </label>
+       <input type="text" name="i" value="{{ustoz.ism}}" disabled>
+       <label>Jins:</label>
+       <input type="text" name="J" value="{{ustoz.jins}}" disabled>
+       <label>yosh: </label>
+       <input type="number" name="y" value="{{ustoz.yosh}}">
+       <label>daraja: </label>
+       <input type="text" name="d" value="{{ustoz.daraja}}">
+       <label>Fan: </label>
+       <select name="f">
+            {% for fan in fanlar %}
+              <option value="{{fan.id}}">{{fan}}</option>
+            {% endfor %}
+       </select>
+       <button type="submit">Saqlash</button>
+     </form>
+     <br>
+     <button><a href="/hamma_ustozlar/">Orqaga</a></button>
+</body>
+</html>

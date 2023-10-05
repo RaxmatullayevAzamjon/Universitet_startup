@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ustozlar</title>
+</head>
+<body>
+     <h1> Hamma Ustozlar ro'yxati</h1>
+     <br>
+     <form method="get">
+         <input type="text" placeholder="Ustoz ismi" name="ism">
+         <button type="submit">Qidirsih</button>
+     </form>
+     <hr>
+     <br>
+        {% for ustoz in ustozlar%}
+          <h1>{{ustoz.id}}. ism: {{ustoz.ism}}  Fan: {{ustoz.fan}}</h1>
+        <button><a href="/ustoz_ochir/{{ustoz.id}}">O'chirish</a></button>
+        <button><a href="/ustoz_update/{{ustoz.id}}">O'zgartirish</a> </button>
+        {% endfor %}
+     <br>
+     <br>
+     <br>
+     <form method="post">{% csrf_token %}
+         <label>Ustoz ismi: </label>
+         <input type="text" placeholder="Ustoz ismi" name="i">
+         <label>Jinsi: </label>
+         <select name="j">
+             <option value="Erkak">Erkak</option>
+             <option value="Ayol">Ayol</option>
+         </select>
+         <label>Yosh: </label>
+         <input type="number" name="y">
+         <label>Darajasi: </label>
+         <select name="d">
+             <option value="Bakalavr">Bakalavr</option>
+             <option value="Magister">Magister</option>
+         </select>
+         <select name="f">
+             {% for fan in fanlar %}
+             <option value="{{fan.id}}">{{fan.nom}}</option>
+             {% endfor %}
+         </select>
+         <button type="submit"> Qo'shish </button>
+     </form>
+</body>
+</html>
